@@ -1,0 +1,54 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@400;500;600;700;800&display=swap');
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  font-family: 'Noto Sans Arabic', system-ui, sans-serif;
+  color: #2e2a34;
+  background: #faf9f7;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+* { box-sizing: border-box; }
+html { direction: rtl; background: #faf9f7; }
+body { margin: 0; min-width: 320px; min-height: 100vh; background: #faf9f7; color: #2e2a34; }
+button, input, textarea, select { font: inherit; }
+button { cursor: pointer; }
+
+.dark, .dark body { background: #15131a; color: #f5f1f8; }
+.dark html { background: #15131a; }
+
+.soft-grid {
+  background-image: radial-gradient(#d9d0c4 0.7px, transparent 0.7px);
+  background-size: 18px 18px;
+}
+.dark .soft-grid { background-image: radial-gradient(#37303e 0.7px, transparent 0.7px); }
+
+.app-scroll::-webkit-scrollbar { width: 7px; height: 7px; }
+.app-scroll::-webkit-scrollbar-thumb { background: #d4c8bc; border-radius: 999px; }
+.dark .app-scroll::-webkit-scrollbar-thumb { background: #4b4252; }
+
+@media (prefers-reduced-motion: no-preference) {
+  .soft-enter { animation: soft-enter 240ms cubic-bezier(.23,1,.32,1) both; }
+}
+@keyframes soft-enter { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+
+:focus-visible { outline: 3px solid rgba(180, 103, 131, .35); outline-offset: 2px; }
+
+.input {
+  width: 100%;
+  border: 1px solid #e7ddd8;
+  border-radius: 16px;
+  background: #fbf8f6;
+  padding: 0.75rem 0.9rem;
+  color: #4b4047;
+  outline: none;
+  transition: border-color 160ms ease, box-shadow 160ms ease, background 160ms ease;
+}
+.input::placeholder { color: #a3959b; }
+.input:focus { border-color: #c98aa0; box-shadow: 0 0 0 3px rgba(180, 103, 131, .12); background: #fff; }
+.dark .input { border-color: #403642; background: #2a242e; color: #eee5eb; }
+.dark .input:focus { border-color: #b46783; background: #302832; }
